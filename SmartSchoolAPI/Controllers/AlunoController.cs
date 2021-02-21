@@ -11,12 +11,10 @@ namespace SmartSchoolAPI.Controllers
     [ApiController]
     public class AlunoController : ControllerBase
     {
-        private readonly SmartContext _database;
         private readonly IRepository _repository;
 
-        public AlunoController(IRepository repository, SmartContext database)
+        public AlunoController(IRepository repository)
         {
-            this._database = database;
             this._repository = repository;
         }
 
@@ -24,14 +22,22 @@ namespace SmartSchoolAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_database.Alunos);
+            List<Aluno> alunos = _repository.GetAllAlunos(true);
+            return Ok(alunos);
+        }
+
+        [HttpGet("byDisciplina/{id}")]
+        public IActionResult GetByDisciplina(int id)
+        {
+            List<Aluno> alunos = _repository.GetAllAlunosByDisciplina(id, true);
+            return Ok(alunos);
         }
 
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            Aluno aluno = _database.Alunos.FirstOrDefault(a => a.Id == id);
+            Aluno aluno = _repository.GetAlunoById(id, true);
             if (aluno == null) return BadRequest($"Aluno com Id {id} não encontrado");
             return Ok(aluno);
         }
@@ -41,7 +47,7 @@ namespace SmartSchoolAPI.Controllers
         [HttpGet("byName")]
         public IActionResult GetNameId(string nome, string sobrenome)
         {
-            Aluno aluno = _database.Alunos.FirstOrDefault(a => a.Nome.Contains(nome) && a.Sobrenome.Contains(sobrenome));
+            Aluno aluno = _repository.GetAlunoByNome(nome, sobrenome, true);
             if (aluno == null) return BadRequest($"Aluno com Nome {nome} {sobrenome} não encontrado");
             return Ok(aluno);
         }
@@ -62,7 +68,7 @@ namespace SmartSchoolAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Aluno aluno)
         {
-            Aluno alunoDB = _database.Alunos.AsNoTracking().FirstOrDefault(a => a.Id == id);
+            Aluno alunoDB = _repository.GetAlunoById(id, true);
             if (alunoDB == null) return BadRequest($"Aluno com Id {id} não encontrado");
 
             _repository.Update(aluno);
@@ -77,7 +83,7 @@ namespace SmartSchoolAPI.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Aluno aluno)
         {
-            Aluno alunoDB = _database.Alunos.AsNoTracking().FirstOrDefault(a => a.Id.Equals(id));
+            Aluno alunoDB = _repository.GetAlunoById(id, true);
             if (alunoDB == null) return BadRequest($"Aluno com Id {id} não encontrado");
 
             _repository.Update(aluno);
@@ -92,7 +98,7 @@ namespace SmartSchoolAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            Aluno aluno = _database.Alunos.FirstOrDefault(a => a.Id.Equals(id));
+            Aluno aluno = _repository.GetAlunoById(id, true);
             if (aluno == null) return BadRequest($"Aluno com Id {id} não encontrado");
 
             _repository.Delete(aluno);

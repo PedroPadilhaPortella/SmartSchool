@@ -28,7 +28,10 @@ namespace SmartSchoolAPI
         {
             services.AddDbContext<SmartContext>(context => 
                 context.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(option => 
+                    option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
             services.AddScoped<IRepository, Repository>();
         }
 
