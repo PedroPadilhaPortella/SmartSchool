@@ -45,9 +45,9 @@ namespace SmartSchoolAPI.Controllers
 
         //https://localhost:5001/aluno/byName?nome=Pedro
         [HttpGet("byName")]
-        public IActionResult GetNameId(string nome)
+        public IActionResult GetNameId(string nome, string sobrenome)
         {
-            Professor professor = _repository.GetProfessorByNome(nome, true);
+            Professor professor = _repository.GetProfessorByNome(nome, sobrenome, true);
             if (professor == null) return BadRequest($"Professor com Nome {nome} não encontrado");
             return Ok(professor);
         }

@@ -58,7 +58,7 @@ namespace SmartSchoolAPI.Data
             IQueryable<Aluno> query = _database.Alunos;
             
             if(includeProfessor) {
-                query = query.Include(a => a.AlunosDisciplinas)
+                query = query.Include(a => a.AlunosDisciplinas) 
                     .ThenInclude(al => al.Disciplina)
                     .ThenInclude(d => d.Professor);
             }
@@ -142,7 +142,7 @@ namespace SmartSchoolAPI.Data
             return query.FirstOrDefault();
         }
 
-        public Professor GetProfessorByNome(string nome, bool includeAlunos)
+        public Professor GetProfessorByNome(string nome, string sobrenome, bool includeAlunos)
         {
             IQueryable<Professor> query = _database.Professores;
             
@@ -152,7 +152,8 @@ namespace SmartSchoolAPI.Data
                     .ThenInclude(ad => ad.Aluno);
             }
             
-            return query.AsNoTracking().FirstOrDefault(p => p.Nome.Contains(nome));
+            return query.AsNoTracking()
+                .FirstOrDefault(p => p.Nome.Contains(nome) && p.Sobrenome.Contains(sobrenome));
         }
     }
 }
