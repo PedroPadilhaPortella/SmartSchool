@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchoolAPI.Data;
@@ -12,17 +13,21 @@ namespace SmartSchoolAPI.Controllers
     public class ProfessorController : ControllerBase
     {
         private readonly IRepository _repository;
+        private readonly IMapper _mapper;
 
-        public ProfessorController(IRepository repository)
+        public ProfessorController(IRepository repository, IMapper mapper)
         {
             this._repository = repository;
+            this._mapper = mapper;
         }
+
 
         [HttpGet]
         public IActionResult Get()
         {
             List<Professor> professores = _repository.GetAllProfessores(true);
-            return Ok(professores);
+            List<ProfessorDTO> professoresDTO = _mapper.Map<List<ProfessorDTO>>(professores);
+            return Ok(professoresDTO);
         }
 
 
@@ -31,7 +36,8 @@ namespace SmartSchoolAPI.Controllers
         {
             Professor professor = _repository.GetProfessorById(id, true);
             if (professor == null) return BadRequest($"Professor com Id {id} não encontrado");
-            return Ok(professor);
+            ProfessorDTO professorDTO = _mapper.Map<ProfessorDTO>(professor);
+            return Ok(professorDTO);
         }
 
 
@@ -39,7 +45,8 @@ namespace SmartSchoolAPI.Controllers
         public IActionResult GetByDisciplina(int id)
         {
             List<Professor> professores = _repository.GetAllProfessoresByDisciplina(id, true);
-            return Ok(professores);
+            List<ProfessorDTO> professoresDTO = _mapper.Map<List<ProfessorDTO>>(professores);
+            return Ok(professoresDTO);
         }
 
 
@@ -49,48 +56,51 @@ namespace SmartSchoolAPI.Controllers
         {
             Professor professor = _repository.GetProfessorByNome(nome, sobrenome, true);
             if (professor == null) return BadRequest($"Professor com Nome {nome} não encontrado");
-            return Ok(professor);
+            ProfessorDTO professorDTO = _mapper.Map<ProfessorDTO>(professor);
+            return Ok(professorDTO);
         }
 
 
-        [HttpPost]
-        public IActionResult Post(Professor professor)
+        [HttpPost] //validar se todos os campos requeridos estão sendo enviados
+        public IActionResult Post(ProfessorSaveDTO professorSave)
         {
+            Professor professor = _mapper.Map<Professor>(professorSave);
             _repository.Add(professor);
             if (_repository.SaveChanges())
-            {
-                return Ok(professor);
-            }
+                return Created($"http://localhost/professor/{professor.Id}", _mapper.Map<ProfessorDTO>(professor));
+            
             return BadRequest("Erro ao Cadastrar Professor");
         }
 
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, Professor professor)
+        [HttpPut("{id}")] //validar se todos os campos requeridos estão sendo enviados
+        public IActionResult Put(int id, ProfessorSaveDTO professorSave)
         {
             Professor professorDB = _repository.GetProfessorById(id, true);
             if (professorDB == null) return BadRequest($"Professor com Id {id} não encontrado");
 
-            _repository.Update(professor);
+            _mapper.Map(professorSave, professorDB);
+            _repository.Update(professorDB);
+
             if (_repository.SaveChanges())
-            {
-                return Ok(professor);
-            }
+                return Created($"http://localhost/professor/{professorDB.Id}", _mapper.Map<ProfessorDTO>(professorDB));
+            
             return BadRequest("Erro ao Atualizar Professor");
         }
 
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Professor professor)
+        public IActionResult Patch(int id, ProfessorSaveDTO professorSave)
         {
             Professor professorDB = _repository.GetProfessorById(id, true);
             if (professorDB == null) return BadRequest($"Professor com Id {id} não encontrado");
 
-            _repository.Update(professor);
+            _mapper.Map(professorSave, professorDB);
+            _repository.Update(professorDB);
+
             if (_repository.SaveChanges())
-            {
-                return Ok(professor);
-            }
+                return Created($"http://localhost/professor/{professorDB.Id}", _mapper.Map<ProfessorDTO>(professorDB));
+            
             return BadRequest("Erro ao Atualizar Professor");
         }
 
@@ -103,9 +113,8 @@ namespace SmartSchoolAPI.Controllers
 
             _repository.Delete(professor);
             if (_repository.SaveChanges())
-            {
                 return Ok($"Professor com id {id} removido");
-            }
+            
             return BadRequest($"Erro ao Remover Professor com id {id}");
         }
     }

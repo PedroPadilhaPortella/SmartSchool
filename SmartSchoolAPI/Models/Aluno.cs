@@ -25,7 +25,7 @@ namespace SmartSchoolAPI.Models
             this.Nome = nome;
             this.Sobrenome = sobrenome;
             this.Telefone = telefone;
-            this.DataNascimento = DataNascimento;
+            this.DataNascimento = dataNascimento;
         }
     }
 }

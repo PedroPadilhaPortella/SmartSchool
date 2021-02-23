@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using SmartSchoolAPI.Data;
 using SmartSchoolAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using SmartSchoolAPI.DTO;
+using AutoMapper;
 
 namespace SmartSchoolAPI.Controllers
 {
@@ -12,10 +14,12 @@ namespace SmartSchoolAPI.Controllers
     public class AlunoController : ControllerBase
     {
         private readonly IRepository _repository;
+        private readonly IMapper _mapper;
 
-        public AlunoController(IRepository repository)
+        public AlunoController(IRepository repository, IMapper mapper)
         {
             this._repository = repository;
+            this._mapper = mapper;
         }
 
 
@@ -23,14 +27,17 @@ namespace SmartSchoolAPI.Controllers
         public IActionResult Get()
         {
             List<Aluno> alunos = _repository.GetAllAlunos(true);
-            return Ok(alunos);
+            List<AlunoDTO> alunosDTO = _mapper.Map<List<AlunoDTO>>(alunos);
+            return Ok(alunosDTO);
         }
+
 
         [HttpGet("byDisciplina/{id}")]
         public IActionResult GetByDisciplina(int id)
         {
             List<Aluno> alunos = _repository.GetAllAlunosByDisciplina(id, true);
-            return Ok(alunos);
+            IEnumerable<AlunoDTO> alunosDTO = _mapper.Map<IEnumerable<AlunoDTO>>(alunos);
+            return Ok(alunosDTO);
         }
 
 
@@ -39,7 +46,8 @@ namespace SmartSchoolAPI.Controllers
         {
             Aluno aluno = _repository.GetAlunoById(id, true);
             if (aluno == null) return BadRequest($"Aluno com Id {id} não encontrado");
-            return Ok(aluno);
+            var alunoDTO = _mapper.Map<AlunoDTO>(aluno);
+            return Ok(alunoDTO);
         }
 
 
@@ -49,48 +57,51 @@ namespace SmartSchoolAPI.Controllers
         {
             Aluno aluno = _repository.GetAlunoByNome(nome, sobrenome, true);
             if (aluno == null) return BadRequest($"Aluno com Nome {nome} {sobrenome} não encontrado");
-            return Ok(aluno);
+            var alunoDTO = _mapper.Map<AlunoDTO>(aluno);
+            return Ok(alunoDTO);
         }
 
 
-        [HttpPost]
-        public IActionResult Post(Aluno aluno)
+        [HttpPost] //validar se todos os campos requeridos estão sendo enviados
+        public IActionResult Post(AlunoSaveDTO alunoSave)
         {
+            Aluno aluno = _mapper.Map<Aluno>(alunoSave);
             _repository.Add(aluno);
             if (_repository.SaveChanges())
-            {
-                return Ok(aluno);
-            }
+                return Created($"http://localhost/aluno/{aluno.Id}", _mapper.Map<AlunoDTO>(aluno));
+            
             return BadRequest("Erro ao Cadastrar Aluno");
         }
 
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, Aluno aluno)
+        [HttpPut("{id}")] //validar se todos os campos requeridos estão sendo enviados
+        public IActionResult Put(int id, AlunoSaveDTO alunoSave)
         {
             Aluno alunoDB = _repository.GetAlunoById(id, true);
             if (alunoDB == null) return BadRequest($"Aluno com Id {id} não encontrado");
 
-            _repository.Update(aluno);
+            _mapper.Map(alunoSave, alunoDB);
+            _repository.Update(alunoDB);
+
             if (_repository.SaveChanges())
-            {
-                return Ok(aluno);
-            }
-            return BadRequest("Erro ao Atualizar Professor");
+                return Created($"http://localhost/aluno/{alunoDB.Id}", _mapper.Map<AlunoDTO>(alunoDB));
+            
+            return BadRequest("Erro ao Atualizar Aluno");
         }
 
 
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Aluno aluno)
+        [HttpPatch("{id}")] //permitir a atualização de dados individualmente
+        public IActionResult Patch(int id, AlunoSaveDTO alunoSave)
         {
             Aluno alunoDB = _repository.GetAlunoById(id, true);
             if (alunoDB == null) return BadRequest($"Aluno com Id {id} não encontrado");
 
-            _repository.Update(aluno);
+            _mapper.Map(alunoSave, alunoDB);
+            _repository.Update(alunoDB);
+
             if (_repository.SaveChanges())
-            {
-                return Ok(aluno);
-            }
+                return Created($"http://localhost/aluno/{alunoDB.Id}", _mapper.Map<AlunoDTO>(alunoDB));
+
             return BadRequest("Erro ao Atualizar Aluno");
         }
 
@@ -103,9 +114,8 @@ namespace SmartSchoolAPI.Controllers
 
             _repository.Delete(aluno);
             if (_repository.SaveChanges())
-            {
                 return Ok($"Aluno com id {id} removido");
-            }
+            
             return BadRequest($"Erro ao Remover Aluno com id {id}");
         }
     }

@@ -153,13 +153,13 @@ namespace SmartSchoolAPI.Migrations
                 columns: new[] { "Id", "Ativo", "DataDesativacao", "DataMatricula", "DataNascimento", "Matricula", "Nome", "Sobrenome", "Telefone" },
                 values: new object[,]
                 {
-                    { 1, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 724, DateTimeKind.Local).AddTicks(3307), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Marta", "Kent", "33225555" },
-                    { 2, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 724, DateTimeKind.Local).AddTicks(5687), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Paula", "Isabela", "3354288" },
-                    { 3, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 724, DateTimeKind.Local).AddTicks(5786), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Laura", "Antonia", "55668899" },
-                    { 4, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 724, DateTimeKind.Local).AddTicks(5794), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "Luiza", "Maria", "6565659" },
-                    { 5, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 724, DateTimeKind.Local).AddTicks(5800), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Lucas", "Machado", "565685415" },
-                    { 6, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 724, DateTimeKind.Local).AddTicks(5809), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "Pedro", "Alvares", "456454545" },
-                    { 7, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 724, DateTimeKind.Local).AddTicks(5815), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "Paulo", "José", "9874512" }
+                    { 1, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 782, DateTimeKind.Local).AddTicks(4438), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Marta", "Kent", "33225555" },
+                    { 2, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 782, DateTimeKind.Local).AddTicks(8624), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "Paula", "Isabela", "3354288" },
+                    { 3, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 782, DateTimeKind.Local).AddTicks(8804), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "Laura", "Antonia", "55668899" },
+                    { 4, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 782, DateTimeKind.Local).AddTicks(8820), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "Luiza", "Maria", "6565659" },
+                    { 5, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 782, DateTimeKind.Local).AddTicks(8835), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Lucas", "Machado", "565685415" },
+                    { 6, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 782, DateTimeKind.Local).AddTicks(8857), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "Pedro", "Alvares", "456454545" },
+                    { 7, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 782, DateTimeKind.Local).AddTicks(8871), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "Paulo", "José", "9874512" }
                 });
 
             migrationBuilder.InsertData(
@@ -178,11 +178,11 @@ namespace SmartSchoolAPI.Migrations
                 columns: new[] { "Id", "Ativo", "DataDesativacao", "DataMatricula", "Nome", "Registro", "Sobrenome", "Telefone" },
                 values: new object[,]
                 {
-                    { 1, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 719, DateTimeKind.Local).AddTicks(4812), "Lauro", 1, "Oliveira", "1197843-9921" },
-                    { 2, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 720, DateTimeKind.Local).AddTicks(8698), "Roberto", 2, "Soares", "1197765-4532" },
-                    { 3, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 720, DateTimeKind.Local).AddTicks(8776), "Ronaldo", 3, "Marconi", "1191276-3312" },
-                    { 4, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 720, DateTimeKind.Local).AddTicks(8779), "Rodrigo", 4, "Carvalho", "1196752-2121" },
-                    { 5, true, null, new DateTime(2021, 2, 21, 23, 0, 57, 720, DateTimeKind.Local).AddTicks(8781), "Alexandre", 5, "Montanha", "1197903-7676" }
+                    { 1, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 753, DateTimeKind.Local).AddTicks(6832), "Lauro", 1, "Oliveira", "1197843-9921" },
+                    { 2, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 755, DateTimeKind.Local).AddTicks(2138), "Roberto", 2, "Soares", "1197765-4532" },
+                    { 3, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 755, DateTimeKind.Local).AddTicks(2309), "Ronaldo", 3, "Marconi", "1191276-3312" },
+                    { 4, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 755, DateTimeKind.Local).AddTicks(2317), "Rodrigo", 4, "Carvalho", "1196752-2121" },
+                    { 5, true, null, new DateTime(2021, 2, 22, 23, 16, 19, 755, DateTimeKind.Local).AddTicks(2320), "Alexandre", 5, "Montanha", "1197903-7676" }
                 });
 
             migrationBuilder.InsertData(
@@ -190,13 +190,13 @@ namespace SmartSchoolAPI.Migrations
                 columns: new[] { "AlunoId", "CursoId", "DataFim", "DataInicio" },
                 values: new object[,]
                 {
-                    { 1, 1, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(3421) },
-                    { 5, 1, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(4046) },
-                    { 2, 2, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(4020) },
-                    { 3, 3, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(4043) },
-                    { 6, 3, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(4051) },
-                    { 4, 4, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(4045) },
-                    { 7, 4, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(4052) }
+                    { 1, 1, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(2999) },
+                    { 5, 1, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(4105) },
+                    { 2, 2, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(4042) },
+                    { 3, 3, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(4097) },
+                    { 6, 3, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(4112) },
+                    { 4, 4, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(4101) },
+                    { 7, 4, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(4116) }
                 });
 
             migrationBuilder.InsertData(
@@ -220,20 +220,20 @@ namespace SmartSchoolAPI.Migrations
                 columns: new[] { "AlunoId", "DisciplinaId", "DataFim", "DataInicio", "Nota" },
                 values: new object[,]
                 {
-                    { 1, 1, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5310), null },
-                    { 4, 9, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5947), null },
-                    { 7, 8, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5963), null },
-                    { 3, 8, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5941), null },
-                    { 2, 7, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5932), null },
-                    { 5, 5, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5951), null },
-                    { 1, 5, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5907), null },
-                    { 6, 9, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5956), null },
-                    { 6, 3, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5954), null },
-                    { 7, 2, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5960), null },
-                    { 3, 2, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5937), null },
-                    { 5, 1, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5950), null },
-                    { 4, 3, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5945), null },
-                    { 2, 11, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5933), null }
+                    { 1, 1, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(6586), null },
+                    { 4, 9, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7696), null },
+                    { 7, 8, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7733), null },
+                    { 3, 8, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7684), null },
+                    { 2, 7, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7666), null },
+                    { 5, 5, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7707), null },
+                    { 1, 5, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7615), null },
+                    { 6, 9, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7716), null },
+                    { 6, 3, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7713), null },
+                    { 7, 2, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7727), null },
+                    { 3, 2, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7678), null },
+                    { 5, 1, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7703), null },
+                    { 4, 3, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7693), null },
+                    { 2, 11, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7670), null }
                 });
 
             migrationBuilder.InsertData(
@@ -252,14 +252,14 @@ namespace SmartSchoolAPI.Migrations
                 columns: new[] { "AlunoId", "DisciplinaId", "DataFim", "DataInicio", "Nota" },
                 values: new object[,]
                 {
-                    { 1, 10, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5930), null },
-                    { 5, 10, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5953), null },
-                    { 3, 4, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5939), null },
-                    { 7, 4, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5961), null },
-                    { 3, 12, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5942), null },
-                    { 7, 12, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5964), null },
-                    { 4, 13, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5948), null },
-                    { 6, 13, null, new DateTime(2021, 2, 21, 23, 0, 57, 725, DateTimeKind.Local).AddTicks(5958), null }
+                    { 1, 10, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7663), null },
+                    { 5, 10, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7710), null },
+                    { 3, 4, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7681), null },
+                    { 7, 4, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7730), null },
+                    { 3, 12, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7687), null },
+                    { 7, 12, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7737), null },
+                    { 4, 13, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7700), null },
+                    { 6, 13, null, new DateTime(2021, 2, 22, 23, 16, 19, 784, DateTimeKind.Local).AddTicks(7723), null }
                 });
 
             migrationBuilder.CreateIndex(

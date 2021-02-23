@@ -1,3 +1,5 @@
+using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,11 +22,12 @@ namespace SmartSchoolAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SmartContext>(context => 
-                context.UseSqlite(Configuration.GetConnectionString("SqliteConnection")));
-            services.AddControllers()
-                .AddNewtonsoftJson(option => 
-                    option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                );
+                context.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
+
+            services.AddControllers().AddNewtonsoftJson(option => 
+                option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IRepository, Repository>();
         }
 
