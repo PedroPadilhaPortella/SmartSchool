@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchoolAPI</name>
+    </assembly>
+    <members>
+        <member name="M:SmartSchoolAPI.Controllers.AlunoController.Get">
+            <summary>
+            Retorna todos os usuários
+            </summary>
+        </member>
+    </members>
+</doc>

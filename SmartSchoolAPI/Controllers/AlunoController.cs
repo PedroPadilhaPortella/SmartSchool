@@ -23,6 +23,9 @@ namespace SmartSchoolAPI.Controllers
         }
 
 
+        ///<summary>
+        ///Retorna todos os usuários
+        ///</summary>
         [HttpGet]
         public IActionResult Get()
         {
