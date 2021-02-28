@@ -1,6 +1,6 @@
 using System;
 
-namespace SmartSchoolAPI.DTO
+namespace SmartSchoolAPI.V1.DTO
 {
     public class AlunoSaveDTO
     {

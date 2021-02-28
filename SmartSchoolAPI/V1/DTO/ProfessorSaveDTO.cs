@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SmartSchoolAPI.Models
+namespace SmartSchoolAPI.V1.DTO
 {
     public class ProfessorSaveDTO
     {

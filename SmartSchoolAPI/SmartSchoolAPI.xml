@@ -4,7 +4,12 @@
         <name>SmartSchoolAPI</name>
     </assembly>
     <members>
-        <member name="M:SmartSchoolAPI.Controllers.AlunoController.Get">
+        <member name="M:SmartSchoolAPI.V1.Controllers.AlunoController.Get">
+            <summary>
+            Retorna todos os usuários
+            </summary>
+        </member>
+        <member name="M:SmartSchoolAPI.V2.Controllers.AlunoController.Get">
             <summary>
             Retorna todos os usuários
             </summary>
