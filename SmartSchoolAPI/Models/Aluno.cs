@@ -14,6 +14,7 @@ namespace SmartSchoolAPI.Models
         public DateTime DataMatricula { get; set; } = DateTime.Now;
         public DateTime? DataDesativacao { get; set; } = null;
         public bool Ativo { get; set; } = true;
+
         public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; }
 
         public Aluno() {}

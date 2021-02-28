@@ -31,8 +31,9 @@ namespace SmartSchoolAPI.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] PageParams pageParams)
         {
-            List<Aluno> alunos = await _repository.GetAllAlunosAsync(pageParams, true);
-            List<AlunoDTO> alunosDTO = _mapper.Map<List<AlunoDTO>>(alunos);
+            var alunos = await _repository.GetAllAlunosAsync(pageParams, true);
+            var alunosDTO = _mapper.Map<List<AlunoDTO>>(alunos);
+            Response.AddPagination(alunos.CurrentPage, alunos.PageSize, alunos.TotalCount, alunos.TotalPages);
             return Ok(alunosDTO);
         }
 

@@ -63,6 +63,19 @@ namespace SmartSchoolAPI.Data
                     .ThenInclude(al => al.Disciplina)
                     .ThenInclude(d => d.Professor);
             }
+
+            if(!string.IsNullOrEmpty(pageParams.Nome)) {
+                query = query.Where(aluno => 
+                    aluno.Nome.ToUpper().Contains(pageParams.Nome.ToUpper()) ||
+                    aluno.Sobrenome.ToUpper().Contains(pageParams.Nome.ToUpper())
+                );
+            }
+            if(pageParams.Matricula > 0)  {
+                query = query.Where(aluno => aluno.Matricula == pageParams.Matricula);
+            }
+            if(pageParams != null)  {
+                query = query.Where(aluno => aluno.Ativo == (pageParams.Ativo != 0));
+            }
             
             query = query.AsNoTracking().OrderBy(a => a.Id);
             return await PageList<Aluno>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
