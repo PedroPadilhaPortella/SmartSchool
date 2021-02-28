@@ -4,6 +4,8 @@ using SmartSchoolAPI.Data;
 using SmartSchoolAPI.Models;
 using SmartSchoolAPI.V1.DTO;
 using AutoMapper;
+using System.Threading.Tasks;
+using SmartSchoolAPI.Helpers;
 
 namespace SmartSchoolAPI.V1.Controllers
 {
@@ -24,11 +26,12 @@ namespace SmartSchoolAPI.V1.Controllers
 
         ///<summary>
         ///Retorna todos os usuários
+        ///http://localhost:5000/v1/aluno?pageNumber=2pageSize=3
         ///</summary>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get([FromQuery] PageParams pageParams)
         {
-            List<Aluno> alunos = _repository.GetAllAlunos(true);
+            List<Aluno> alunos = await _repository.GetAllAlunosAsync(pageParams, true);
             List<AlunoDTO> alunosDTO = _mapper.Map<List<AlunoDTO>>(alunos);
             return Ok(alunosDTO);
         }

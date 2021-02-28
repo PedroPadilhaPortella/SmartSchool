@@ -4,9 +4,10 @@
         <name>SmartSchoolAPI</name>
     </assembly>
     <members>
-        <member name="M:SmartSchoolAPI.V1.Controllers.AlunoController.Get">
+        <member name="M:SmartSchoolAPI.V1.Controllers.AlunoController.Get(SmartSchoolAPI.Helpers.PageParams)">
             <summary>
             Retorna todos os usuários
+            http://localhost:5000/v1/aluno?pageNumber=2pageSize=3
             </summary>
         </member>
         <member name="M:SmartSchoolAPI.V2.Controllers.AlunoController.Get">
