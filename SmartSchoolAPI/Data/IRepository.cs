@@ -23,6 +23,7 @@ namespace SmartSchoolAPI.Data
         List<Professor> GetAllProfessores(bool includeAlunos);
         List<Professor> GetAllProfessoresByDisciplina(int disciplinaId, bool includeAlunos);
         Professor GetProfessorById(int professorId, bool includeAlunos);
+        List<Professor> GetProfessoresByAlunoId(int alunoId, bool includeAlunos);
         Professor GetProfessorByNome(string nome, string sobrenome, bool includeAlunos);
     }
 }

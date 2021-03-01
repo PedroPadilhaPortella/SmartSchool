@@ -77,6 +77,8 @@ namespace SmartSchoolAPI
                 var xmlCommentPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
                 options.IncludeXmlComments(xmlCommentPath);
             });
+
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider api)
@@ -87,6 +89,8 @@ namespace SmartSchoolAPI
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseSwagger().UseSwaggerUI(options => {
                 foreach (var description in api.ApiVersionDescriptions)
@@ -99,7 +103,7 @@ namespace SmartSchoolAPI
 
             // app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => endpoints.MapControllers() );
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

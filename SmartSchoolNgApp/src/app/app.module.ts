@@ -1,15 +1,17 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ToastrModule } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/Components.module';
-import { ServicesModule } from './services/Services.module';
 import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
     declarations: [
@@ -19,6 +21,10 @@ import { SharedModule } from './shared/shared.module';
         BrowserModule,
         BrowserAnimationsModule,
         BsDropdownModule.forRoot(),
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ModalModule.forRoot(),
         AppRoutingModule,
         NgxSpinnerModule,
         ToastrModule.forRoot({
@@ -29,8 +35,7 @@ import { SharedModule } from './shared/shared.module';
             closeButton: true
         }),
         SharedModule,
-        ComponentsModule,
-        ServicesModule
+        ComponentsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

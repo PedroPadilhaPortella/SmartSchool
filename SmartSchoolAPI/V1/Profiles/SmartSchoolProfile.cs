@@ -10,6 +10,7 @@ namespace SmartSchoolAPI.V1.Helpers
         public SmartSchoolProfile()
         {
             CreateMap<Aluno, AlunoSaveDTO>().ReverseMap();
+            CreateMap<Aluno, AlunoPatchDTO>().ReverseMap();
             CreateMap<AlunoDTO, Aluno>();
             CreateMap<Aluno, AlunoDTO>()
                 .ForMember(destiny => destiny.Nome, source => source.MapFrom(aluno => $"{aluno.Nome} {aluno.Sobrenome}"))

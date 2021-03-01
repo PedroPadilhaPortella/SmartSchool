@@ -6,6 +6,7 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { NgModule } from "@angular/core";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
+import { ProfessoresAlunosComponent } from './alunos/professores-alunos/professores-alunos.component';
 
 @NgModule({
     imports: [
@@ -18,12 +19,14 @@ import { CommonModule } from '@angular/common';
         AlunosComponent,
         ProfessoresComponent,
         DashboardComponent,
+        ProfessoresAlunosComponent,
     ],
     exports: [
         PerfilComponent,
         AlunosComponent,
         ProfessoresComponent,
-        DashboardComponent,    
+        DashboardComponent,
+        ProfessoresAlunosComponent,
     ],
     providers: []
 })

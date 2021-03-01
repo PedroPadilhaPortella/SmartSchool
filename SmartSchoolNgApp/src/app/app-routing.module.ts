@@ -17,7 +17,15 @@ const routes: Routes = [
         component: AlunosComponent
     },
     {
+        path: 'alunos/:id',
+        component: AlunosComponent
+    },
+    {
         path: 'professores',
+        component: ProfessoresComponent
+    },
+    {
+        path: 'professores/:id',
         component: ProfessoresComponent
     },
     {

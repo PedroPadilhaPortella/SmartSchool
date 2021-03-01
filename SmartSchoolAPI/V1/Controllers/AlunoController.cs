@@ -52,7 +52,7 @@ namespace SmartSchoolAPI.V1.Controllers
         {
             Aluno aluno = _repository.GetAlunoById(id, true);
             if (aluno == null) return BadRequest($"Aluno com Id {id} não encontrado");
-            var alunoDTO = _mapper.Map<AlunoDTO>(aluno);
+            var alunoDTO = _mapper.Map<AlunoSaveDTO>(aluno);
             return Ok(alunoDTO);
         }
 
@@ -97,7 +97,7 @@ namespace SmartSchoolAPI.V1.Controllers
 
 
         [HttpPatch("{id}")] //permitir a atualização de dados individualmente
-        public IActionResult Patch(int id, AlunoSaveDTO alunoSave)
+        public IActionResult Patch(int id, AlunoPatchDTO alunoSave)
         {
             Aluno alunoDB = _repository.GetAlunoById(id, true);
             if (alunoDB == null) return BadRequest($"Aluno com Id {id} não encontrado");
@@ -106,7 +106,7 @@ namespace SmartSchoolAPI.V1.Controllers
             _repository.Update(alunoDB);
 
             if (_repository.SaveChanges())
-                return Created($"http://localhost/aluno/{alunoDB.Id}", _mapper.Map<AlunoDTO>(alunoDB));
+                return Created($"http://localhost/aluno/{alunoDB.Id}", _mapper.Map<AlunoPatchDTO>(alunoDB));
 
             return BadRequest("Erro ao Atualizar Aluno");
         }
